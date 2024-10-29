@@ -46,14 +46,12 @@ export function TransactionPage() {
         <CardTitle>Sales Order</CardTitle>
       </CardHeader>
       <CardContent className="p-0">
-        {" "}
-        {/* Hapus padding pada CardContent */}
         <ChartContainer config={chartConfig} className="h-[250px] w-full">
           <LineChart
             accessibilityLayer
             data={data}
             margin={{
-              left: 0, // Hilangkan margin kiri
+              left: 0, 
               right: 24,
             }}
           >

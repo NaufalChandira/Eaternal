@@ -18,7 +18,7 @@ export default function Transaction() {
 
         const jsonData = await res.json();
         console.log("Fetched data:", jsonData);
-        setData(jsonData.data || []); // Ensure data is an array
+        setData(jsonData.data || []); 
       } catch (error) {
         console.error(error);
       } finally {

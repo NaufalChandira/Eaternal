@@ -46,7 +46,7 @@ export default function Product() {
             <BarChart
               data={data}
               margin={{
-                left: 0, // Hilangkan margin kiri
+                left: 0, 
                 right: 12,
               }}
             >
