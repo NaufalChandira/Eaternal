@@ -3,6 +3,12 @@ import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
+interface Brands {
+  id: number;
+  name: string;
+  count_sold: number;
+}
+
 const chartConfig = {
   desktop: {
     label: "Desktop",
@@ -11,8 +17,8 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function Product() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<Brands[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +52,7 @@ export default function Product() {
             <BarChart
               data={data}
               margin={{
-                left: 0, 
+                left: 0,
                 right: 12,
               }}
             >

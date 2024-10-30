@@ -6,9 +6,15 @@ import Product from "./chart";
 import Image from "next/image";
 import Buttons2 from "@/assets/Buttons2.png";
 
+interface Brands {
+  id: number;
+  name: string;
+  count_sold: number;
+}
+
 export default function ProductPage() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<Brands[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +35,7 @@ export default function ProductPage() {
     fetchData();
   }, []);
 
-  const totalCountSold = data.reduce((total, item) => total + item.count_sold, 0);
+  const totalCountSold: number = data.reduce((total, item) => total + item.count_sold, 0);
 
   return (
     <>

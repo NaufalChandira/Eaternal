@@ -1,10 +1,16 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { TrendingUp } from "lucide-react";
 import { Line, LineChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { useEffect, useState } from "react";
+
+interface Users {
+  id: number;
+  name: string;
+  count_transaction: number;
+}
 
 export const description = "A bar chart";
 
@@ -16,8 +22,8 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export function TransactionPage() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<Users[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +57,7 @@ export function TransactionPage() {
             accessibilityLayer
             data={data}
             margin={{
-              left: 0, 
+              left: 0,
               right: 24,
             }}
           >

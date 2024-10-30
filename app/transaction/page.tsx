@@ -6,9 +6,15 @@ import { TransactionPage } from "./chart";
 import Image from "next/image";
 import Buttons from "@/assets/Buttons.png";
 
+interface Users {
+  id: number;
+  name: string;
+  count_transactions: number;
+}
+
 export default function Transaction() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<Users[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +24,7 @@ export default function Transaction() {
 
         const jsonData = await res.json();
         console.log("Fetched data:", jsonData);
-        setData(jsonData.data || []); 
+        setData(jsonData.data || []);
       } catch (error) {
         console.error(error);
       } finally {
@@ -29,7 +35,7 @@ export default function Transaction() {
     fetchData();
   }, []);
 
-  const totalCountTransactions = data.reduce((total, item) => total + (item.count_transactions || 0), 0); // Safely access count_transactions
+  const totalCountTransactions: number = data.reduce((total, item) => total + item.count_transactions, 0);
 
   if (loading) return <div>Loading...</div>;
 
